@@ -1,0 +1,1 @@
+2025-05-28 09:32:33,820 - SUMMARY for Epoch 100 (Interval 91-100) | Train Loss: 0.7589 | Train Acc: 0.7642 | Train F1: 0.7113 | Val Loss: 0.8253 | Val Acc: 0.7398 | Val F1: 0.6946

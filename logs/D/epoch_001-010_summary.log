@@ -1,0 +1,1 @@
+2025-05-27 17:50:44,757 - SUMMARY for Epoch 10 (Interval 1-10) | Train Loss: 0.5213 | Train Acc: 0.6665 | Train F1: 0.6597 | Val Loss: 0.9345 | Val Acc: 0.5058 | Val F1: 0.5275

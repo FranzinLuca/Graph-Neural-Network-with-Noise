@@ -1,0 +1,1 @@
+2025-05-28 10:14:54,865 - SUMMARY for Epoch 120 (Interval 111-120) | Train Loss: 0.8576 | Train Acc: 0.6016 | Train F1: 0.5623 | Val Loss: 0.9387 | Val Acc: 0.5857 | Val F1: 0.5477
