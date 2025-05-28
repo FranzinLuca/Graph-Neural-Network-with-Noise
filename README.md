@@ -56,7 +56,7 @@ The solution leverages two main Graph Neural Network architectures: `GINEClassif
 -   `requirements.txt`: Python dependencies.
 -   `README.md`: This file.
 -   `zipthefolder.py`: Provided script to package submissions.
--   `checkpoints/`: Stores trained model checkpoints (e.g., `model_A_best.pth`, `model_A_epoch_10.pth`).
+-   `checkpoints/`: Stores trained model checkpoints (e.g., `model_A_epoch_10.pth`).
 -   `source/`: Contains all implemented Python modules:
     -   `loadData.py`: `GraphDataset` class for loading data.
     -   `models.py`: `GNN` model definition.
