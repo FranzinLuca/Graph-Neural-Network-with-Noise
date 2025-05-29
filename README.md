@@ -6,6 +6,8 @@ This project implements advanced Graph Neural Network (GNN) architectures for gr
 
 The solution leverages two main Graph Neural Network architectures: `GINEClassifier` and `EdgeCentricGNNImproved`. Node features, which are absent in the original PPA dataset, are initialized as a unit vector (all ones) for each node using an `add_ones` transform. These initial features are then processed by learnable node encoders within each GNN model. Both models are designed to handle edge features and are trained with a strategy to mitigate the impact of noise.
 
+Kaggle notebook: https://www.kaggle.com/code/franzin1886634/graph-neural-network-with-noisy-data-hackaton
+
 **Key Components:**
 
 1.  **GNN Architectures**:
