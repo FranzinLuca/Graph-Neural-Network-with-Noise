@@ -94,23 +94,30 @@ def get_dataset_id_from_path(path_str):
     if not path_str:
         print("Warning: Path string is empty, cannot extract dataset ID.")
         return "unknown"
-    # Example path: "../../../../kaggle/input/dataset/data/B/train.json/0.4_train.json"
-    # We expect to find '/data/A/', '/data/B/', etc.
+
+    # Example paths:
+    # "../../../../kaggle/input/dataset/A/train.json"
+    # "some/path/to/B/my_data.json.gz"
+    # "/absolute/path/C/another_file.json"
+    # "D/only_id_and_file.json"
+
     path_segments = path_str.split(os.sep) # Use os.sep for platform independence
-    try:
-        data_idx = path_segments.index('data')
-        if data_idx < len(path_segments) - 1:
-            potential_id = path_segments[data_idx + 1]
-            if potential_id in ['A', 'B', 'C', 'D']:
-                return potential_id
-            else:
-                print(f"Warning: Segment '{potential_id}' after 'data' is not a recognized dataset ID (A,B,C,D) in path '{path_str}'.")
-                return "unknown_extracted" 
-    except ValueError:
-        # 'data' segment not found
-        pass
+    possible_ids = {'A', 'B', 'C', 'D'} # Use a set for efficient lookup
+
+    for i, segment in enumerate(path_segments):
+        if segment in possible_ids:
+            # Check if there is a next segment (the potential json file)
+            if i + 1 < len(path_segments):
+                next_segment = path_segments[i + 1]
+                # Check if the next segment is a .json or .json.gz file
+                if next_segment.endswith(".json") or next_segment.endswith(".json.gz"):
+                    # We found the pattern /{A,B,C,D}/*.json(.gz)
+                    return segment # This segment is the dataset ID
+            # If 'segment' is an ID but there's no next segment, or the next isn't a JSON,
+            # it's not the pattern we're looking for, so continue searching.
     
-    print(f"Warning: Could not reliably extract dataset ID (A,B,C,D) from 'data' segment in path '{path_str}'. Defaulting to 'unknown'.")
+    # If the loop completes without returning, the pattern was not found
+    print(f"Warning: Could not find pattern '/{{A,B,C,D}}/*.json(.gz)' in path '{path_str}'. Defaulting to 'unknown'.")
     return "unknown"
 
 def get_user_input(prompt, default=None, required=False, type_cast=str):
